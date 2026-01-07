@@ -33,3 +33,18 @@ Notes
 
 - `.env` is excluded from the repo. Keep secrets out of source control.
 - If you prefer using system Python, install dependencies into that environment instead.
+
+CI / Deployment
+
+- A GitHub Actions workflow is included at `.github/workflows/ci.yml` that installs dependencies and runs a basic syntax/runtime check.
+- A `Procfile` is included for simple Heroku/Gunicorn deployment: `web: gunicorn main:app`.
+- Packaging metadata is provided in `pyproject.toml`.
+
+To deploy to Heroku:
+
+```powershell
+heroku create your-app-name
+git push heroku master
+heroku config:set GENAI_API_KEY=your_api_key_here
+```
+
